@@ -1,0 +1,5 @@
+<h2 class="center-block">Welcome</h2>
+<%= form_tag('/payment_records', method: 'GET', class: 'center-block') do %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag('Go', class: 'btn btn-primary') %>
+<% end %>

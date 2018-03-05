@@ -1,0 +1,32 @@
+<h2>payment records</h2>
+<div>
+  <%= @name %>
+</div>
+<table class="table">
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.item_name %></td>
+      <td>$<%= record.price %></td>
+    </tr>
+  <% end %>
+</table>
+<div align="right">
+  <p>Total $<%= @total %> </p>
+</div>
+<div align="right">
+  <a href= <%= "#{payment_records_pdf_path(name: @name)}" %> class="btn btn-primary active" role="button">PDF</a>
+</div>
+
+<%= form_tag('/payment_records', method: 'POST', class: 'form-inline') do %>
+  <%= text_field(:record, :name, type: :hidden, value: @name) %>
+  <div class="form-group">
+    <label class="sr-only" for="item_name">item_name</label>
+    <%= text_field(:record, :item_name, class: 'form-control', placeholder: 'item_name') %>
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="price">price</label>
+    <%= text_field(:record, :price, class: 'form-control', placeholder: 'price') %>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add</button>
+<% end %>

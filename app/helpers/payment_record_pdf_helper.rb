@@ -1,0 +1,2 @@
+module PaymentRecordPdfHelper
+end
